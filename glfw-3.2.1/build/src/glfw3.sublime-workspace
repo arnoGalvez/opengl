@@ -1,0 +1,891 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"set",
+				"set__remove"
+			],
+			[
+				"set__re",
+				"set__remove\tint set__remove(struct set *, int)"
+			],
+			[
+				"print",
+				"printf\tprintf …"
+			],
+			[
+				"set__a",
+				"set__add\tint set__add(struct set *, int)"
+			],
+			[
+				"po",
+				"pos"
+			],
+			[
+				"in",
+				"is_pos_untouched"
+			],
+			[
+				"SE",
+				"SET__SIZE"
+			],
+			[
+				"fi",
+				"find\tint find(const int *s, int len, int element)"
+			],
+			[
+				"ll",
+				"llm__next"
+			],
+			[
+				"d",
+				"data\tint data"
+			],
+			[
+				"llm",
+				"llm__next"
+			],
+			[
+				"bei",
+				"being_added_after"
+			],
+			[
+				"el",
+				"element2"
+			],
+			[
+				"n",
+				"next\tstruct lelement * next"
+			],
+			[
+				"test_lnk",
+				"test_lnk__add_after_1"
+			],
+			[
+				"pti",
+				"print_test"
+			],
+			[
+				"lnk__ad",
+				"lnk__add_after\tint lnk__add_after(struct link *, struct lelement *, struct lelement *)"
+			],
+			[
+				"elem",
+				"element0"
+			],
+			[
+				"stru",
+				"struct"
+			],
+			[
+				"N",
+				"Next"
+			],
+			[
+				"h",
+				"head"
+			],
+			[
+				"pri",
+				"print_test\tvoid print_test(char *c, int bool)"
+			],
+			[
+				"log",
+				"log2SmartPython"
+			],
+			[
+				"lo",
+				"log2NaifPython"
+			],
+			[
+				"prin",
+				"printf\tprintf …"
+			],
+			[
+				"ca",
+				"capacity"
+			],
+			[
+				"pr",
+				"printf\tint printf(const char *restrict __format, ...)"
+			],
+			[
+				"siz",
+				"sizeof\t(set_dynamic.c)"
+			],
+			[
+				"s4",
+				"s4_2"
+			],
+			[
+				"s5",
+				"s5_2"
+			],
+			[
+				"equ",
+				"equal_2"
+			],
+			[
+				"eq",
+				"equal_2"
+			],
+			[
+				"equa",
+				"equal_1"
+			],
+			[
+				"set__",
+				"set__is_empty"
+			],
+			[
+				"test",
+				"test__set__size_2"
+			],
+			[
+				"tes",
+				"test__set__find_2"
+			],
+			[
+				"test__set_f",
+				"test__set__find_1"
+			],
+			[
+				"test__set_re",
+				"test__set__remove_1"
+			],
+			[
+				"test__set",
+				"test__set__add_1"
+			],
+			[
+				"test__set_i",
+				"test__set__is_empty_1"
+			],
+			[
+				"tail",
+				"tailles_egales\tint tailles_egales"
+			],
+			[
+				"test__set_siz",
+				"test__set__size_1"
+			],
+			[
+				"bien",
+				"bien_present\tint bien_present"
+			],
+			[
+				"tesst",
+				"test__set__find_1"
+			],
+			[
+				"bine",
+				"bien_non_present"
+			],
+			[
+				"tess",
+				"test__set__remove_2"
+			],
+			[
+				"te",
+				"test__set__remove_1"
+			],
+			[
+				"non",
+				"bien_non_enleve"
+			],
+			[
+				"test__set_add",
+				"test__set__add_2\t(test_sentinel_struc.c)"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"RE",
+				"RESET"
+			],
+			[
+				"test_s",
+				"test__set_remove_3"
+			],
+			[
+				"str",
+				"struct\t(main.c)"
+			],
+			[
+				"dis",
+				"display.h\t(main.c)"
+			],
+			[
+				"al",
+				"allPlayers"
+			],
+			[
+				"ga",
+				"gameboard\t(main.c)"
+			],
+			[
+				"pla",
+				"players"
+			],
+			[
+				"pl",
+				"player"
+			],
+			[
+				"get",
+				"get_number"
+			],
+			[
+				"get_ma",
+				"get_mana_gain\tint get_mana_gain(struct Player *)"
+			],
+			[
+				"get_m",
+				"get_mana\tint get_mana(struct Player *)"
+			],
+			[
+				"set_po",
+				"set_position\tvoid set_position(struct Player *, int)"
+			],
+			[
+				"get_po",
+				"get_position\t(player.h)"
+			],
+			[
+				"se",
+				"set_life\tvoid set_life(struct Player *, int)"
+			],
+			[
+				"players",
+				"playersDecks"
+			],
+			[
+				"de",
+				"deck"
+			],
+			[
+				"pal",
+				"playersDecks\tDeck [10] playersDecks"
+			],
+			[
+				"t",
+				"target"
+			],
+			[
+				"set_ma",
+				"set_mana\tvoid set_mana(struct Player *, int)"
+			],
+			[
+				"place",
+				"place_toffee\t(gameboard.h)"
+			],
+			[
+				"bo",
+				"board_pool"
+			],
+			[
+				"B",
+				"BOARD_POOL_SIZE"
+			],
+			[
+				"cas",
+				"case_i"
+			],
+			[
+				"T",
+				"TOFFEE_SQUARE\t(cards.c)"
+			],
+			[
+				"p",
+				"position"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"cre",
+				"create_gameboard"
+			],
+			[
+				"wi",
+				"wished_position"
+			],
+			[
+				"random_mo",
+				"random_movement"
+			],
+			[
+				"rand",
+				"random_position_around_position\tint random_position_around_position(int, Gameboard *)"
+			],
+			[
+				"test_d",
+				"test_decide_new_positions\tvoid test_decide_new_positions()"
+			],
+			[
+				"R",
+				"RESET"
+			],
+			[
+				"resul",
+				"result_positions_freq"
+			],
+			[
+				"wat",
+				"wanted_positions"
+			],
+			[
+				"resu",
+				"result_positions_freq"
+			],
+			[
+				"cr",
+				"create_gameboard\tGameboard create_gameboard()"
+			],
+			[
+				"G",
+				"Gameboard"
+			],
+			[
+				"wanted",
+				"wanted_positions"
+			],
+			[
+				"rando",
+				"random_position_around_position\tint random_position_around_position(int reference_position, Gameboard *gameboard)"
+			],
+			[
+				"ra",
+				"random_position"
+			],
+			[
+				"EM",
+				"EMPTY_SQUARE"
+			],
+			[
+				"go",
+				"go_to\tvoid go_to(Player *player, Gameboard *gameboard, int new_position)"
+			],
+			[
+				"dipl",
+				"display_gameboard"
+			],
+			[
+				"c",
+				"case"
+			],
+			[
+				"joue",
+				"joueur"
+			],
+			[
+				"test_tof",
+				"test_toffee\tint test_toffee(Gameboard *gameboard)"
+			],
+			[
+				"le",
+				"left"
+			],
+			[
+				"to",
+				"toffee_count"
+			],
+			[
+				"fo",
+				"for\tFor Loop"
+			],
+			[
+				"play",
+				"play_card\tPointerToAction play_card(Card *)"
+			],
+			[
+				"get_",
+				"get_card\tCard * get_card(int i)"
+			],
+			[
+				"nb",
+				"nbr_player_alive"
+			],
+			[
+				"car",
+				"cards.c"
+			],
+			[
+				"g",
+				"gameboard\t(test_2.c)"
+			],
+			[
+				"Mo",
+				"Move\tvoid Move(Gameboard *)"
+			],
+			[
+				"plye",
+				"player_number"
+			],
+			[
+				"PL",
+				"PLAYER_NUMBER"
+			],
+			[
+				"w",
+				"wanted_positions\tint [10] wanted_positions"
+			],
+			[
+				"res",
+				"expected_result_position"
+			],
+			[
+				"joeu",
+				"joueur"
+			],
+			[
+				"test_ra",
+				"test_random_position\tint test_random_position(Gameboard *gameboard)"
+			],
+			[
+				"ran",
+				"randomly_place_players\tvoid randomly_place_players(Gameboard *)"
+			],
+			[
+				"gm",
+				"gameboard"
+			],
+			[
+				"test_r",
+				"test_random_position_around_position_with_full_gameboard\tint test_random_position_around_position_with_full_gameboard(int reference_position, Gameboard *gameboard)"
+			],
+			[
+				"di",
+				"display_test\tvoid display_test(char *c, int result)"
+			],
+			[
+				"C",
+				"COLUMNS"
+			],
+			[
+				"test_u",
+				"test_up\tint test_up(int a, int expected_result)"
+			],
+			[
+				"ex",
+				"expected_result"
+			],
+			[
+				"displ",
+				"display_test"
+			],
+			[
+				"dispal",
+				"display_test"
+			],
+			[
+				"test_",
+				"test_random_position"
+			],
+			[
+				"P",
+				"Players\tint [11] Players"
+			],
+			[
+				"arr",
+				"array2"
+			],
+			[
+				"a",
+				"array2"
+			],
+			[
+				"gamebo",
+				"gameboard.o"
+			],
+			[
+				"ki",
+				"kill_player\tvoid kill_player(int id, Gameboard *g)"
+			],
+			[
+				"b",
+				"b"
+			],
+			[
+				"f",
+				"for\tFor Loop"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 372.0,
+		"last_filter": "Package Control: ",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Enable Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ins",
+				"Install Package Control"
+			]
+		],
+		"width": 476.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"view.settings().get('font_face')"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/arno/OpenGL/glfw-3.2.1/build/Makefile",
+		"/home/arno/pg116-4250/td1/set/test_set_func.c",
+		"/home/arno/pg116-4250/td1/dynamic/test_dynamic_struc.c",
+		"/home/arno/pg116-4250/td1/dynamic/set_dynamic.h",
+		"/home/arno/pg116-4250/td1/dynamic/set_dynamic.c",
+		"/home/arno/pg116-4250/td1/sentinel/test_sentinel_struc.c",
+		"/home/arno/pg116-4250/td1/sentinel/set_sentinel.c",
+		"/home/arno/pg116-4250/td1/link/set_link.c",
+		"/home/arno/pg116-4250/td1/link/test_link_struc.c",
+		"/home/arno/pg116-4250/td1/link/set_link.h",
+		"/home/arno/pg116-4250/td1/link/link.h",
+		"/home/arno/pg116-4250/td1/link/link.c",
+		"/home/arno/pg116-4250/td1/set/set.h",
+		"/home/arno/Projet/projets5-3717/src/player.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/display.h",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/gameboard.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/gameboard.h",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/player.h",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/main.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/player.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/Makefile",
+		"/home/arno/Projet/projets5-3717/src/version_0et1/gameboard.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/cards.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/display.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/cards.h",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/deck.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/deck.h",
+		"/home/arno/Projet/projets5-3717/src/version_0et1/cards.c",
+		"/home/arno/Projet/projets5-3717/src/version_0et1/player.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/variables.h",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/test_2.c",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/test_2.h",
+		"/home/arno/Projet/projets5-3717/src/abase/player.c",
+		"/home/arno/Projet/projets5-3717/src/abase/cards.h",
+		"/home/arno/Projet/projets5-3717/src/achievment_2/test_2",
+		"/home/arno/Téléchargements/player_c.c",
+		"/home/arno/Téléchargements/player_h.c",
+		"/home/arno/Téléchargements/main_c.c",
+		"/home/arno/Téléchargements/display_h.c",
+		"/home/arno/Téléchargements/display_c.c",
+		"/home/arno/Téléchargements/deck_h.c",
+		"/home/arno/Téléchargements/deck_c.c",
+		"/home/arno/Téléchargements/cards_h.c",
+		"/home/arno/Téléchargements/cards_c.c",
+		"/home/arno/latex/va.tex",
+		"/home/arno/latex/training.tex",
+		"/home/arno/Téléchargements/latex_sample.tex",
+		"/home/arno/Projet/projets5-3717/src/gameboard.c",
+		"/home/arno/Projet/projets5-3717/src/gameboard.h",
+		"/home/arno/Projet/projets5-3717/Makefile",
+		"/home/arno/Projet/projets5-3717/src/cards.c",
+		"/home/arno/Projet/projets5-3717/src/deck.h",
+		"/home/arno/Projet/projets5-3717/src/player.h",
+		"/home/arno/Projet/projets5-3717/src/test-0.c",
+		"/home/arno/Projet/projets5-3717/src/cards.h",
+		"/home/arno/Projet/projets5-3717/src/display_players.c",
+		"/home/arno/Projet/projets5-3717/src/deck.c",
+		"/home/arno/.config/sublime-text-3/Packages/LaTeXBox/LaTeXBox.sublime-settings",
+		"/home/arno/Projet/projets5-3717/src/variables.h",
+		"/home/arno/Projet/projets5-3717/roadmap.c",
+		"/home/arno/Projet/projets5-3717/src/display_players.h",
+		"/home/arno/Projet/projets5-3717/src/base.c",
+		"/home/arno/Projet/projets5-3717/src/variables.c",
+		"/home/arno/Projet/projets5-3717/src/card.c",
+		"/home/arno/.config/sublime-text-3/Packages/Package Control/Package Control.sublime-settings",
+		"/home/arno/Projet/projets5-3717/base.c",
+		"/home/arno/Projet/projets5-3717/src/agalvez.c",
+		"/home/arno/Bureau/sublime_text_3/latex/training.tex",
+		"/home/arno/exoc/planning.c",
+		"/home/arno/exoc/exo2.c"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"*len",
+			"printf",
+			"s8",
+			"s9",
+			"s1",
+			"i",
+			"len",
+			"find",
+			"data",
+			"test__llm__is_end_mark",
+			"p",
+			"s",
+			"np",
+			"i",
+			"s",
+			"***** ",
+			"o",
+			"Player",
+			"&",
+			" &(",
+			"&(",
+			"int",
+			"Player",
+			"position",
+			"Player",
+			"player",
+			"Player",
+			"players",
+			"g.",
+			"ameboard.board[i]",
+			"struct",
+			"display",
+			"random_position",
+			"d",
+			"a",
+			"*.h",
+			" *.",
+			"board",
+			"-1",
+			"1",
+			"-1",
+			" -1",
+			"-1",
+			"-2",
+			"decide",
+			"decide_new_position",
+			"go_to",
+			"gameboard",
+			"0",
+			"GRN",
+			"i",
+			"h",
+			"p",
+			"&gameboard",
+			"gameboard",
+			"p2.",
+			"i",
+			"Player *target)",
+			"Player *",
+			"target",
+			"Player * target)",
+			"* target)",
+			"Player*)",
+			"number",
+			"a",
+			"5",
+			"TOTAL",
+			"decide",
+			"position",
+			"i",
+			"main",
+			"test_2",
+			"main",
+			"base_2",
+			"i",
+			"b",
+			"i",
+			"players",
+			"$",
+			"vaught",
+			"right",
+			"int a = player->position;",
+			"position",
+			"Player* player",
+			"Player*",
+			"*);//",
+			"gameboard",
+			"Gameboard*",
+			"int",
+			"*",
+			"*);",
+			"*);//...",
+			"selected_position",
+			"available_positions",
+			"u",
+			"vide",
+			"go_up",
+			"*);//...\n",
+			"Player*",
+			"Player",
+			"gameboard",
+			"board",
+			"src/",
+			"get_nb_cards",
+			"Player*",
+			"Player",
+			"target",
+			"test-0",
+			"test",
+			"card_name",
+			"player",
+			"Player",
+			"player",
+			"display_players",
+			"eqnarray",
+			"eqn",
+			"eqnarray",
+			"rand",
+			"discard",
+			"hand_size",
+			"player",
+			"hand_size",
+			"player",
+			"Player",
+			"player",
+			".",
+			"struct",
+			" &"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "glfw3.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"~/exoc/planning.c"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 292.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

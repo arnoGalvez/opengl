@@ -1,0 +1,53 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1596422321/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1596422321.dir/build.make CMakeFiles/cmTryCompileExec1596422321.dir/build
+gmake[1] : on entre dans le répertoire « /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1596422321.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTryCompileExec1596422321.dir/CheckSymbolExists.c.o   -c /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTryCompileExec1596422321
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1596422321.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTryCompileExec1596422321.dir/CheckSymbolExists.c.o  -o cmTryCompileExec1596422321 -rdynamic 
+CMakeFiles/cmTryCompileExec1596422321.dir/CheckSymbolExists.c.o: dans la fonction « main »:
+CheckSymbolExists.c:(.text+0x16): référence indéfinie vers « pthread_create »
+collect2: erreur: ld a retourné 1 code d'état d'exécution
+gmake[1]: *** [cmTryCompileExec1596422321] Erreur 1
+gmake[1] : on quitte le répertoire « /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp »
+gmake: *** [cmTryCompileExec1596422321/fast] Erreur 2
+
+File /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/gmake "cmTryCompileExec1778553720/fast"
+/usr/bin/gmake -f CMakeFiles/cmTryCompileExec1778553720.dir/build.make CMakeFiles/cmTryCompileExec1778553720.dir/build
+gmake[1] : on entre dans le répertoire « /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp »
+/usr/bin/cmake -E cmake_progress_report /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1778553720.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec1778553720.dir/CheckFunctionExists.c.o   -c /usr/share/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec1778553720
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1778553720.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTryCompileExec1778553720.dir/CheckFunctionExists.c.o  -o cmTryCompileExec1778553720 -rdynamic -lpthreads 
+/usr/bin/ld: ne peut trouver -lpthreads
+collect2: erreur: ld a retourné 1 code d'état d'exécution
+gmake[1]: *** [cmTryCompileExec1778553720] Erreur 1
+gmake[1] : on quitte le répertoire « /home/arno/OpenGL/glfw-3.2.1/build/CMakeFiles/CMakeTmp »
+gmake: *** [cmTryCompileExec1778553720/fast] Erreur 2
+
+
