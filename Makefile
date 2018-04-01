@@ -1,8 +1,12 @@
 CC = g++
 LIB = -lglfw3 -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl
 CFLAGS = -Wall -Wextra
-SRC_FILES = $(wildcard *.c)
-OBJ_FILES = $(patsubst %.c,%.o,$(SRC_FILES))
+DIR = -I src -I src/drawing -I src/window
+DRW_FILES = $(wildcard src/drawing/*.cpp)
+WIN_FILES = $(wildcard src/window/*.cpp)
+EXE_FILES = $(wildcard src/exercice/*.cpp)
+GLD_FILE = src/glad/glad.c
+OBJ_FILES = $(patsubst %.c[p]*,%.o, ${DRW_FILES} ${WIN_FILES} ${EXE_FILES} ${GLD_FILE})
 
 all: compile
 
@@ -10,10 +14,9 @@ clean:
 	rm -f $(OBJ_FILES)
 
 compile: $(OBJ_FILES)
-	${CC} ${CFLAGS} -o exe ${OBJ_FILES} ${LIB}
 
-%:%.o glad.o
-	${CC} ${CFLAGS} -o $@ glad.o $< ${LIB}
+%.o: %.c[p]*
+	${CC} ${CFLAGS} ${DIR} -o $@ $< -c
 
-%.o:%.c 
-	${CC} ${CFLAGS} -o $@ $< -c
+exo[1-9]*: ${OBJ_FILES}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} -L/usr/include/GLFW ${LIB} 
