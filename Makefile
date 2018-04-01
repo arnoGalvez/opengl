@@ -6,17 +6,25 @@ DRW_FILES = $(wildcard src/drawing/*.c)
 WIN_FILES = $(wildcard src/window/*.c)
 EXE_FILES = $(wildcard src/exercice/*.c)
 GLD_FILE = src/glad/glad.c
-OBJ_FILES = $(patsubst %.c[p]*,%.o, ${DRW_FILES} ${WIN_FILES} ${EXE_FILES} ${GLD_FILE})
+OBJ_FILES = $(patsubst %.c, %.o, ${DRW_FILES} ${WIN_FILES} ${GLD_FILE})
+EXE_OBJ = $(patsubst %.c, %.o, ${EXE_FILES})
 
 all: compile
 
-clean:
-	rm -f $(OBJ_FILES)
+exe:
+	echo ${EXE_OBJ} ${OBJ_FILES}
 
-compile: $(OBJ_FILES)
+clean:
+	rm -f ${OBJ_FILES} ${EXE_OBJ}
+
+compile: ${OBJ_FILES} ${EXE_OBJ}
 
 %.o: %.c
 	${CC} ${CFLAGS} ${DIR} -o $@ $< -c
 
-exo[1-9]*: ${OBJ_FILES}
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} -L/usr/include/GLFW ${LIB} 
+exo1 : ${OBJ_FILES} ${EXE_OBJ}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/include/GLFW ${LIB} 
+
+
+
+

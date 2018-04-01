@@ -41,7 +41,7 @@ int main()
     }
 
     // creating the shader program
-    Shader shaderProgramColor("/home/arno/OpenGL/Shader/colorShader.vs", "/home/arno/OpenGL/Shader/colorShader.fs");
+    Shader shaderProgramColor("/home/arno/opengl/src/shader/colorShader.vs", "/home/arno/opengl/src/shader/colorShader.fs");
 
     // creating a VAO for the triangle
     //--------------------------------
