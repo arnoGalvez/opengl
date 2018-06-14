@@ -12,10 +12,10 @@ EXE_OBJ = $(patsubst %.c, %.o, ${EXE_FILES})
 all: compile
 
 exe:
-	echo ${EXE_OBJ} ${OBJ_FILES}
+	echo ${EXE_OBJ} ${OBJ_FILES} 
 
 clean:
-	rm -f ${OBJ_FILES} ${EXE_OBJ}
+	rm -f ${OBJ_FILES} ${EXE_OBJ} exo1 exo2
 
 compile: ${OBJ_FILES} ${EXE_OBJ}
 
@@ -25,6 +25,5 @@ compile: ${OBJ_FILES} ${EXE_OBJ}
 exo1 : ${OBJ_FILES} ${EXE_OBJ}
 	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/include/GLFW ${LIB} 
 
-
-
-
+exo2 : ${OBJ_FILES} ${EXE_OBJ}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/include/GLFW ${LIB} 

@@ -65,3 +65,48 @@ void Triangle2(unsigned int *VAO, unsigned int *VBO, unsigned int *EBO, float *v
     glad_glBindVertexArray(0);
     glad_glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
+
+void XMove(float * x, char * dir, float speedMultiplier, float deltaTime)
+{
+    if (*dir == RIGHT)
+    {
+        *x += deltaTime * speedMultiplier;
+        if (*x > .5f)
+        {
+            *x = .5f;
+            *dir = LEFT;
+        }
+    }
+    else if (*dir == LEFT)
+    {
+        *x -= deltaTime * speedMultiplier;
+        if (*x < -.5f)
+        {
+            *x = -.5f;
+            *dir = RIGHT;
+        }
+    }
+}
+void YMove(float * y, char * dir, float speedMultiplier, float deltaTime)
+{
+    if (*dir == UP )
+    {
+        *y += deltaTime * speedMultiplier;
+        if (*y > .5f)
+        {
+            *y = .5f;
+            *dir = DOWN;
+        }
+    }
+    else if (* dir == DOWN)
+    {
+        *y -= deltaTime * speedMultiplier;
+    
+        if (*y < -.5f)
+        {
+            *y = -.5f;
+            *dir = UP;
+        }
+    }
+}
+
