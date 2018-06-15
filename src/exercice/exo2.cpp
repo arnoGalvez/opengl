@@ -47,7 +47,7 @@ int main()
 
     float vertices[] = {
         //positions         //colors                   //textures coords
-        0.5f, 0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,    1.0f, 1.0f, // top right
+        0.5f, 0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,    .1f, .1f, // top right
         0.5, -0.5f, 0.0f,   1.0f, 1.0f, 1.0f, 1.0f,    1.0f, 0.0f, // bottom right
         -0.5f, -0.5f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f,    0.0f, 0.0f, // bottom left
         -0.5f, 0.5f, 0.0f,  1.0f, 1.0f, 1.0f, 1.0f,    0.0f, 1.0f  // top left
@@ -100,7 +100,7 @@ int main()
 
     // loading an image
     int width, height, nrChannels;
-    // to flip the himage vertically
+    // to flip the image vertically
     stbi_set_flip_vertically_on_load(true);  
     unsigned char * image_data[2];
     char doom[] = "container.jpg";
@@ -143,7 +143,7 @@ int main()
 
     glBindVertexArray(0);
 
-    Shader shaderProgramTexture("/home/arno/opengl/src/shader/textureShader.vs", "/home/arno/opengl/src/shader/textureShader.fs");
+    Shader shaderProgramTexture("/home/arno/opengl/src/shader/vertexTextureShader.glsl", "/home/arno/opengl/src/shader/fragTextureShader.glsl");
 
     // setting texture units
     shaderProgramTexture.use(); // dont't forget it !!! Otherwise the next lines won't work !
@@ -157,7 +157,8 @@ int main()
     float time1 = 0.0f;
     float time2 = 0.0f;
     float deltaTime;
-    float speedMultiplier = 1.f;
+    float speedMultiplier = 0.2f;
+    
 
     while(!glfwWindowShouldClose(window))
     {

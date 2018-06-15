@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "drawing.h": "c"
+        "drawing.h": "c",
+        "iostream": "cpp"
     }
 }
