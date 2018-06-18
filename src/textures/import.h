@@ -8,7 +8,7 @@ class GenTexture2D
     public:
         int width, height;
         unsigned int textID;
-        GenTexture2D(const char* pathToImage, GLint wrap_s, GLint wrap_t, GLint mag, GLint min)
+        GenTexture2D(const char* pathToImage,  GLint wrap_s, GLint wrap_t, GLint mag, GLint min)
         {
             // 2 : how the function should perform outside it's range ?
             // what type of texture is being affected, 
