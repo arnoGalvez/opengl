@@ -14,7 +14,8 @@
                 "/usr/include/x86_64-linux-gnu/c++/5",
                 "${workspaceFolder}/src",
                 "/usr/include",
-                "/usr/include/glad"
+                "/usr/include/glad",
+                "/usr/include/assimp"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

@@ -7,7 +7,7 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
-
+#include <glm/glm.hpp>
 class Shader
 {
 public:
@@ -94,6 +94,15 @@ public:
     void setVec3f(const std::string &name, float *value) const
     {
         glUniform3fv(glGetUniformLocation(ID, name.c_str()), 1, value);
+    }
+    //-------------------------------------------------------------------------
+    void setVec3(const std::string &name, glm::vec3 v)
+    {
+        glUniform3f(glGetUniformLocation(ID, name.c_str()), v.x, v.y, v.z);
+    }
+    void setMat4(const std::string &name, glm::mat4 m)
+    {
+        glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, glm::value_ptr(m));
     }
 
 private:

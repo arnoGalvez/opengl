@@ -8,7 +8,7 @@ class GenTexture2D
     public:
         int width, height;
         unsigned int textID;
-        GenTexture2D(const char* pathToImage,  GLint wrap_s, GLint wrap_t, GLint mag, GLint min)
+        GenTexture2D(const char* pathToImage, GLint wrap_s, GLint wrap_t, GLint mag, GLint min, bool isJPG=false)
         {
             // 2 : how the function should perform outside it's range ?
             // what type of texture is being affected, 
@@ -39,14 +39,15 @@ class GenTexture2D
 
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, min);
 
-            // 4: generating the texture. Please note UNSIGNED
+            // 4: generating the texture. Please note UNSIGNED_BYTE
             glGenTextures(1, &textID);
             glBindTexture(GL_TEXTURE_2D, textID);
             stbi_set_flip_vertically_on_load(true);
             data = stbi_load(pathToImage, &width, &height, &nrChannels, 0);
             if (data)
             {
-                glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+                // ! GL_RGB GL_RGB for jpg !
+                glTexImage2D(GL_TEXTURE_2D, 0, isJPG ? GL_RGB : GL_RGBA, width, height, 0, isJPG ? GL_RGB : GL_RGBA, GL_UNSIGNED_BYTE, data);
                 glGenerateMipmap(GL_TEXTURE_2D);
             }
             else

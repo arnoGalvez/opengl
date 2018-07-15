@@ -3,6 +3,9 @@
         "drawing.h": "c",
         "iostream": "cpp",
         "ostream": "cpp",
-        "cmath": "cpp"
-    }
+        "cmath": "cpp",
+        "array": "cpp",
+        "vector": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }

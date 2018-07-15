@@ -1,6 +1,6 @@
 CC = g++
-LIB = -lglfw3 -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl
-CFLAGS = -Wall -Wextra
+LIB = -lglfw3 -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl -lassimp
+CFLAGS = -Wall -Wextra -std=c++11 -g
 DIR = -I src -I src/drawing -I src/window
 DRW_FILES = $(wildcard src/drawing/*.cpp)
 WIN_FILES = $(wildcard src/window/*.cpp)
@@ -23,10 +23,10 @@ compile: ${OBJ_FILES} ${EXE_OBJ}
 	${CC} ${CFLAGS} ${DIR} -o $@ $< -c
 
 exo1 : ${OBJ_FILES} ${EXE_OBJ}
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/include/GLFW ${LIB} 
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/lib/GLFW ${LIB} 
 
 exo2 : ${OBJ_FILES} ${EXE_OBJ}
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/include/GLFW ${LIB} 
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/lib/GLFW ${LIB} 
 
 pra: ${OBJ_FILES} src/exercice/practice.o
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/practice.o -L/usr/include/GLFW ${LIB}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/practice.o -L/usr/lib/GLFW -L/usr/lib/assimp${LIB}
