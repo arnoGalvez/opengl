@@ -5,7 +5,9 @@ in vec2 texCoord;
 
 uniform sampler2D textureDiffuse0;
 
+uniform sampler2D textureSpecular0;
+
 void main()
 {
-    fragColor = vec4(1, 1, 1, 1);
+    fragColor = texture(textureDiffuse0, texCoord);
 }

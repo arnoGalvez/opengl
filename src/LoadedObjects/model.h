@@ -4,8 +4,8 @@
 #include <glad/glad.h> 
 
 #include <vector>
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
+//#define STB_IMAGE_IMPLEMENTATION
+//#include <stb_image.h>
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>
@@ -24,6 +24,7 @@ class Model
             for(size_t i = 0; i < meshes.size(); i++)
             {
                 meshes[i].Draw(shader);
+                //std::cout << meshes[i].vertices.size() << std::endl;
             }
             
         }
@@ -37,7 +38,7 @@ class Model
         void loadModel(string path)
         {
             Assimp::Importer importer;
-            const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
+            const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate );
             if(!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode) 
             {
                 cout << "ERROR::ASSIMP::" << importer.GetErrorString() << endl;
@@ -72,18 +73,19 @@ class Model
 
             for (size_t i = 0; i < mesh->mNumVertices; i++)
             {
+
                 Vertex vertex;
                 glm::vec3 position;
-                //position.x = mesh->mVertices[i].x;
-                //position.y = mesh->mVertices[i].y;
-                //position.z = mesh->mVertices[i].z;
-                Vector3DtoVec3(&mesh->mVertices[i], &position);
+                position.x = mesh->mVertices[i].x;
+                position.y = mesh->mVertices[i].y;
+                position.z = mesh->mVertices[i].z;
+                //Vector3DtoVec3(&mesh->mVertices[i], &position);
                 vertex.Position = position;
                 glm::vec3 normal;
-                //normal.x = mesh->mNormals[i].x;
-                //normal.y = mesh->mNormals[i].y;
-                //normal.z = mesh->mNormals[i].z;
-                Vector3DtoVec3(&(mesh->mNormals[i]), &normal);
+                normal.x = mesh->mNormals[i].x;
+                normal.y = mesh->mNormals[i].y;
+                normal.z = mesh->mNormals[i].z;
+                //Vector3DtoVec3(&(mesh->mNormals[i]), &normal);
                 vertex.Normal = normal;
                 if(mesh->mTextureCoords[0])
                 {
@@ -114,18 +116,18 @@ class Model
             vector<Texture> specularMaps = loadMaterial(material, aiTextureType_SPECULAR, specular);
             textures.insert(textures.end(), specularMaps.begin(), specularMaps.end());
             
-            std::cout << vertices.size() << std::endl;
+            //std::cout << vertices.size() << std::endl;
 
             return Mesh(vertices, indices, textures);
         }
         
-        vector<Texture> loadMaterial(aiMaterial* mat, aiTextureType aiType, types type)
+        vector<Texture> loadMaterial(aiMaterial* mat, aiTextureType ty, types type)
         {
             vector<Texture> textures;
-            for (unsigned int i=0; i < mat->GetTextureCount(aiType); i++)
+            for (unsigned int i=0; i < mat->GetTextureCount(ty); i++)
             {
                 aiString path;
-                mat->GetTexture(aiType, i, &path);
+                mat->GetTexture(ty, i, &path);
                 Texture texture;
                 texture.Id = TextureFromFile(path.C_Str(), directory);
                 texture.type = type;
@@ -146,7 +148,7 @@ class Model
         unsigned int TextureFromFile(const char* path, const string dir, bool gamma=false)
         {
             string filename = string(path);
-            string pathToTexture = dir + "/" + "glass_dif.png";
+            string pathToTexture = dir + "/" + filename;
 
             stbi_set_flip_vertically_on_load(true);
             int width, height, nrChannels;
@@ -164,8 +166,8 @@ class Model
             {
                 glGenTextures(1, &Id);
                 glBindTexture(GL_TEXTURE_2D, Id);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+                glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST_MIPMAP_NEAREST);
                 
@@ -210,7 +212,7 @@ class Model
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
+                std::cout << "Texture succeeded to load at path: " << path << std::endl;
                 stbi_image_free(data);
             }
             else

@@ -62,6 +62,11 @@ class Mesh
             int heightCount = 0;
             types last= LAST;
             int counts[last];
+            for (int i = 0; i < last; i++)
+            {
+                counts[i] = 0;
+            }
+            //std::cout << "---" << std::endl;
 
             for (int i=0; i < textures.size(); i++)
             {
@@ -69,14 +74,17 @@ class Mesh
                 string type = TypesToString(enumType);
                 if (type != "")
                 {
-                    shader.setInt(type + to_string(counts[enumType]++), GL_TEXTURE0 + i);
+                    string tmp = type + to_string(counts[enumType]++);
+                    //std::cout << tmp << std::endl;
+                    shader.setInt(tmp, i);
+                    glActiveTexture(GL_TEXTURE0 + i);
                     glEnable(GL_TEXTURE0 + i);
                     glBindTexture(GL_TEXTURE_2D, textures[i].Id);
                 }
             }
 
             glBindVertexArray(VAO);
-            glDrawElements(GL_TRIANGLES, sizeof(indices) / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
+            glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
 
             glBindVertexArray(0);
             glActiveTexture(GL_TEXTURE0);
@@ -98,6 +106,8 @@ class Mesh
             glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned int), &indices[0], GL_STATIC_DRAW);
 
+
+
             glEnableVertexAttribArray(0);
             glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, Position));
             glEnableVertexAttribArray(1);
@@ -113,9 +123,9 @@ class Mesh
             switch(type)
             {
                 case diffuse:
-                    return "diffuse";
+                    return "textureDiffuse";
                 case specular:
-                    return "specular";
+                    return "textureSpecular";
                 case normal:
                     return "normal";
                 case height:

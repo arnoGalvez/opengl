@@ -1,5 +1,5 @@
 CC = g++
-LIB = -lglfw3 -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl
+LIB = -lglfw3 -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl -lassimp
 CFLAGS = -Wall -Wextra -std=c++11 -g
 DIR = -I src -I src/drawing -I src/window
 DRW_FILES = $(wildcard src/drawing/*.cpp)

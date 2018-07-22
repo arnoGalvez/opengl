@@ -10,8 +10,8 @@
 #include "textures/import.h"
 #include "window/window.h"
 #include "camera/camera.h"
-//#include "assimp/mesh.h"
-//#include "LoadedObjects/model.h"
+#include "assimp/mesh.h"
+#include "LoadedObjects/model.h"
 
 using namespace glm;
 
@@ -213,10 +213,12 @@ int main()
         shaderCube.setFloat(p1 + s + p2 + "kQ", 0.000f);
     }
     //*/
-    // ! !!!!!!!!Shader shaderNanosuit("/home/arno/opengl/src/shader/vertex/vertexCube.glsl", "/home/arno/opengl/src/shader/fragment/nanosuit.glsl");
+    Shader shaderNanosuit("/home/arno/opengl/src/shader/vertex/vertexCube.glsl", "/home/arno/opengl/src/shader/fragment/nanosuit.glsl");
+    shaderNanosuit.use();
+    shaderNanosuit.setMat4("proj", persp);
     //*/
-    //char* nanopath = "/home/arno/opengl/src/LoadedObjects/textures/scene.fbx";
-    //Model nanosuit = Model(nanopath);
+    char* nanopath = "/home/arno/opengl/src/LoadedObjects/textures/nanosuit.obj";
+    Model nanosuit = Model(nanopath);
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
@@ -225,17 +227,17 @@ int main()
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glfwGetWindowSize(window, &width, &height);
+        mat4 camMat = cam.GetViewMatrix();
 
         // Cube
         //-----
-        shaderCube.use();
+        /*shaderCube.use();
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, container.textID);
         glActiveTexture(GL_TEXTURE1);
         glBindTexture(GL_TEXTURE_2D, containerSpecular.textID);
         glActiveTexture(GL_TEXTURE2);
         glBindTexture(GL_TEXTURE_2D, emissionMap.textID);
-        mat4 camMat = cam.GetViewMatrix();
         shaderCube.setMat4("view", camMat);
         shaderCube.setVec3("point.position", lightTranslation);
         shaderCube.setVec3("camPos", cam.position);
@@ -265,12 +267,12 @@ int main()
             glDrawArrays(GL_TRIANGLES, 0, sizeof(cube));
         }//*/
 
-        /*shaderNanosuit.use();
+        shaderNanosuit.use();
         shaderNanosuit.setMat4("view", camMat);
         mat4 scal;
-        scal = scale(scal, vec3(0.2f, 0.2f, 0.2f));
+        scal = scale(scal, vec3(.2f, .2f, .2f));
         shaderNanosuit.setMat4("model", scal);
-        //nanosuit.Draw(shaderNanosuit);//*/
+        nanosuit.Draw(shaderNanosuit);//*/
 
         glfwSwapBuffers(window);
     }//*/
