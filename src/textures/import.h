@@ -1,3 +1,6 @@
+#ifndef __IMPORT_H
+#define __IMPORT_H
+
 #include <glad/glad.h>
 #include <iostream>
 #define STB_IMAGE_IMPLEMENTATION
@@ -61,3 +64,4 @@ class GenTexture2D
         int nrChannels;
         unsigned char *data;
 };
+#endif // !__IMPORT_H

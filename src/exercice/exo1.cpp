@@ -131,7 +131,7 @@ int main()
     {
         // input
         // -----
-        process_input(window);
+        //process_input(window);
 
         // render
         // ------

@@ -30,6 +30,7 @@ struct Vertex {
 struct Texture {
     unsigned int Id;
     types type;
+    string path;
 };
 
 class Mesh 

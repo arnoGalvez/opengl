@@ -10,11 +10,12 @@
 #include "textures/import.h"
 #include "window/window.h"
 #include "camera/camera.h"
-#include "assimp/mesh.h"
+//#include "assimp/mesh.h"
+//#include "LoadedObjects/model.h"
 
 using namespace glm;
 
-#define BUFFER_OFFSET(offset) ((void*) (offset))
+#define BUFF_OFFSET(offset) ((void*) (offset))
 #define STRIDE(n, type) (n * (sizeof(type)))
 
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
@@ -45,9 +46,9 @@ int main()
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
-    // * Mouse Input
-    //glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    //glfwSetCursorPosCallback(window, mouse_callback);
+    // ! Mouse Input
+    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glfwSetCursorPosCallback(window, mouse_callback);
     
 
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
@@ -110,20 +111,20 @@ int main()
     glBindBuffer(GL_ARRAY_BUFFER, VBO1);
     glBufferData(GL_ARRAY_BUFFER, sizeof(cube), cube, GL_STATIC_DRAW);
     glEnableVertexAttribArray(0);
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, STRIDE(8, float), BUFFER_OFFSET(0));
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, STRIDE(8, float), BUFF_OFFSET(0));
     glEnableVertexAttribArray(1);
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, STRIDE(8, float), BUFFER_OFFSET( 3 * sizeof(float)));
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, STRIDE(8, float), BUFF_OFFSET( 3 * sizeof(float)));
     glEnableVertexAttribArray(2);
-    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, STRIDE(8, float), BUFFER_OFFSET(6 * sizeof(float)));
+    glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, STRIDE(8, float), BUFF_OFFSET(6 * sizeof(float)));
     
     glBindVertexArray(0);//*/
     
-    //GenTexture2D image3("/home/arno/opengl/src/textures/halo-infinite.jpg", GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_NEAREST, GL_NEAREST_MIPMAP_NEAREST);
+    //GenTexture2D image3("/home/arno/opengl/src/textures/halo-infinite.jpg", GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_NEAREST, GL_NEAREST_MIPMAP_NEAREST, true);
     
     Shader shaderCube("/home/arno/opengl/src/shader/vertex/vertexCube.glsl", "/home/arno/opengl/src/shader/fragment/fragCube.glsl");
     Shader shaderLamp("/home/arno/opengl/src/shader/vertex/vertexLight.glsl", "/home/arno/opengl/src/shader/fragment/fragLamp.glsl");
 
-    glClearColor(0.f, 0.f, 0.f, 1.f);
+    glClearColor(0.f, 0.3f, 0.f, 1.f);
     glEnable(GL_DEPTH_TEST);// ! don't forget the z-buffer
     int width;
     int height;
@@ -211,6 +212,11 @@ int main()
         shaderCube.setFloat(p1 + s + p2 + "kL", 0.00f);
         shaderCube.setFloat(p1 + s + p2 + "kQ", 0.000f);
     }
+    //*/
+    // ! !!!!!!!!Shader shaderNanosuit("/home/arno/opengl/src/shader/vertex/vertexCube.glsl", "/home/arno/opengl/src/shader/fragment/nanosuit.glsl");
+    //*/
+    //char* nanopath = "/home/arno/opengl/src/LoadedObjects/textures/scene.fbx";
+    //Model nanosuit = Model(nanopath);
     while(!glfwWindowShouldClose(window))
     {
         glfwPollEvents();
@@ -257,7 +263,14 @@ int main()
             trans = translate(trans, pointLightPositions[i]);
             shaderLamp.setMat4("model", trans);
             glDrawArrays(GL_TRIANGLES, 0, sizeof(cube));
-        }
+        }//*/
+
+        /*shaderNanosuit.use();
+        shaderNanosuit.setMat4("view", camMat);
+        mat4 scal;
+        scal = scale(scal, vec3(0.2f, 0.2f, 0.2f));
+        shaderNanosuit.setMat4("model", scal);
+        //nanosuit.Draw(shaderNanosuit);//*/
 
         glfwSwapBuffers(window);
     }//*/
