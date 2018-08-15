@@ -18,7 +18,7 @@ class circle
             for(int i = 1; i < n + 1; i++)
             {
                 int j = 2*i;
-                float temp = ((float)i / n) * 2 * M_PI;
+                float temp = ((float)i / n) * 2 * 3.14f;
                 circleVertices[j] = cos(temp) * radius;
                 circleVertices[j+1] = sin(temp) * radius;
             }

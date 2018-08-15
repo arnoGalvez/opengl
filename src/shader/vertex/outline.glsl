@@ -19,6 +19,5 @@ void main()
     texCoord = aTexCoord;
     //normalView = mat3(transpose(inverse(view * model))) * aNormal;
 
-    gl_Position = proj * view * model * vec4(aPos, 1.0);
-    //gl_PointSize = gl_Position.z;
+    gl_Position = proj * view * model * vec4(aPos + normal*0.02, 1.0);
 }

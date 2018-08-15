@@ -5,7 +5,7 @@
 #include <glm/glm.hpp>
 #include <iostream>
 #include <vector>
-#include <shader.h>
+#include "shader/shader.h"
 using namespace std;
 
 #define BUFFER_OFFSET(offset) ((void*) offset)
@@ -13,6 +13,7 @@ using namespace std;
 enum types {
     diffuse=0,
     specular,
+    ambient,
     normal,
     height,
     LAST
@@ -27,6 +28,8 @@ struct Vertex {
 //Naming Convention:
 //textureDiffuse0
 //textureSpecular0
+//textureAmbient0
+//...
 struct Texture {
     unsigned int Id;
     types type;
@@ -40,6 +43,10 @@ class Mesh
         vector<Vertex> vertices;
         vector<Texture> textures;
         vector<unsigned int> indices;
+        string dif = "textureDiffuse";
+        string spec = "textureSpecular";
+        string amb = "textureAmbient";
+        // ! difBegin + # + difEnd ?
 
         /* Constructor */
         Mesh(vector<Vertex> vertices, vector<unsigned int> indices, vector<Texture> textures)
@@ -47,6 +54,7 @@ class Mesh
             this->vertices = vertices;
             this->textures = textures;
             this->indices = indices;
+            this->b = true;
             setupMesh();
         }
 
@@ -54,20 +62,18 @@ class Mesh
         void Draw(Shader shader)
         {
             shader.use();
-            string dif = "textureDiffuse";
-            string spec = "textureSpecular";
             int diffuseCount = 0;
             int specularCount = 0;
             int normalCount = 0;
             int heightCount = 0;
-            types last= LAST;
+            types last = LAST;
             int counts[last];
             for (int i = 0; i < last; i++)
             {
                 counts[i] = 0;
             }
             //std::cout << "---" << std::endl;
-
+            
             for (int i=0; i < textures.size(); i++)
             {
                 types enumType = textures[i].type;
@@ -75,13 +81,16 @@ class Mesh
                 if (type != "")
                 {
                     string tmp = type + to_string(counts[enumType]++);
-                    //std::cout << tmp << std::endl;
-                    shader.setInt(tmp, i);
+                    //if (b)
+                        //std::cout << GL_MAX_TEXTURE_IMAGE_UNITS << std::endl;
                     glActiveTexture(GL_TEXTURE0 + i);
-                    glEnable(GL_TEXTURE0 + i);
+                    shader.setInt(tmp, i);
                     glBindTexture(GL_TEXTURE_2D, textures[i].Id);
                 }
             }
+            //if (b)
+                //std::cout << "\n" << std::endl;
+            //b = false;
 
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);
@@ -92,6 +101,7 @@ class Mesh
     private:
         /* buffers */
         unsigned int VAO, VBO, EBO;
+        bool b;
 
         /* Functions */
         void setupMesh()
@@ -123,9 +133,11 @@ class Mesh
             switch(type)
             {
                 case diffuse:
-                    return "textureDiffuse";
+                    return dif;
                 case specular:
-                    return "textureSpecular";
+                    return spec;
+                case ambient:
+                    return amb;
                 case normal:
                     return "normal";
                 case height:

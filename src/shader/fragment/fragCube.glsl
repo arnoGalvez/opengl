@@ -53,11 +53,12 @@ void main()
 {   
     vec3 directionalLight = ComputeDirectional(directional, material, fragPos, texCoord, normal, camPos);
     vec3 result = directionalLight;
+    result = vec3(0);
     for (int i = 0; i < POINT_LIGHTS_COUNT; i++)
     {
         vec3 pointLight = ComputePoint(pointLights[i], material, fragPos, texCoord, normal, camPos);
         result += pointLight;
-    }
+    }//*/
 
     result += ComputeSpot(spotAngleInner, vec3(1), material, texCoord, fragPos, camPos, camForward);
 
@@ -107,7 +108,7 @@ vec3 ComputePoint(Point light, Material mat, vec3 fragmentPos, vec2 textureCoord
     vec3 specular = vec3(0);
     if (diffuseness > 0)
     {
-        vec3 reflectedRay = normalize( reflect(-normalizedLightDir, normalizedNormal));
+        vec3 reflectedRay = normalize( reflect(normalizedLightDir, normalizedNormal));
         vec3 eyeDir = normalize(cameraPos - fragmentPos);
         spec = pow(max(0, dot(reflectedRay, eyeDir)), mat.shininess);
         specular = vec3(texture(mat.specular, textureCoord)) * (spec * light.specular);

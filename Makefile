@@ -28,5 +28,7 @@ exo1 : ${OBJ_FILES} ${EXE_OBJ}
 exo2 : ${OBJ_FILES} ${EXE_OBJ}
 	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/lib/GLFW ${LIB} 
 
-pra: ${OBJ_FILES} src/exercice/practice.o
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/practice.o -L/usr/lib/GLFW  ${LIB}
+phong: ${OBJ_FILES} src/exercice/phong.o
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/phong.o -L/usr/lib/GLFW  ${LIB}
+water: ${OBJ_FILES} src/exercice/water.o
+	${CC} ${CFLAGS} -o $@${OBJ_FILES} src/exercice/water.o -L/usr/lib/GLFW ${LIB}

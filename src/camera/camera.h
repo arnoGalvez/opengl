@@ -36,12 +36,14 @@ class Camera {
 
         Camera() :
             worldUp(vec3(0.f, 1.f, 0.f)),
-            position(vec3(0.f, 0.f, 5.f)),
-            targetPoint(vec3(0.5f, 0.5f, 0.f)),
+            position(vec3(0.f, 0.f, 0.f)),
+            targetPoint(vec3(0.f, 0.f, 1.f)),
             speed(SPEED),
             mouseSensitivity(MOUSESENS)
         {
-            front = vec3(0.f, 0.f, -1.f);
+            front = vec3(0.f, 0.f, 1.f);
+            yaw = YAW;
+            pitch = PITCH;
             UpdateVectors();
         }
 
@@ -68,10 +70,10 @@ class Camera {
                 position += right * velocity;
         }
 
-        void ProcessMouseMouvement(float xOffset, float yOffset, bool constrainPitch = true)
+        void ProcessMouseMouvement(float xDelta, float yDelta, bool constrainPitch = true)
         {
-            yaw += xOffset * mouseSensitivity;
-            pitch += yOffset * mouseSensitivity;
+            yaw += xDelta * mouseSensitivity;
+            pitch += yDelta * mouseSensitivity;
 
             if (constrainPitch)
             {
@@ -88,10 +90,16 @@ class Camera {
     private:
         void UpdateVectors()
         {
+            static bool tmp = true;
             front.x = cos(radians(pitch)) * cos(radians(yaw));
             front.y = sin(radians(pitch));
-            front.z = cos(radians(pitch)) * sin(radians(yaw));
+            front.z = cos(radians(pitch)) * sin(radians(yaw));//*/
             front = normalize(front);
+            if (tmp)
+            {
+                //std::cout << front.x << " " << front.y << " " << front.z << std::endl; 
+                tmp = false;
+            }
             right = normalize(cross(front, worldUp));
             up = normalize(cross(right, front));
         }

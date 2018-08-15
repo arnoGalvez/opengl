@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/pra",
+            "program": "${workspaceFolder}/water",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
