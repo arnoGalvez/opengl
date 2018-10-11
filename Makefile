@@ -31,4 +31,8 @@ exo2 : ${OBJ_FILES} ${EXE_OBJ}
 phong: ${OBJ_FILES} src/exercice/phong.o
 	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/phong.o -L/usr/lib/GLFW  ${LIB}
 water: ${OBJ_FILES} src/exercice/water.o
-	${CC} ${CFLAGS} -o $@${OBJ_FILES} src/exercice/water.o -L/usr/lib/GLFW ${LIB}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/water.o -L/usr/lib/GLFW ${LIB}
+raytracer: ${OBJ_FILES} src/exercice/raytracer.o
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/raytracer.o -L/usr/lib/GLFW ${LIB}
+geometry: ${OBJ_FILES} src/exercice/geometry.o
+	${CC} ${CFLAGS} -o $@.exe ${OBJ_FILES} src/exercice/geometry.o -L/usr/lib/GLFW ${LIB}

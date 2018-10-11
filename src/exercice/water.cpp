@@ -8,7 +8,9 @@
 #include "window/window.h"
 #include "camera/camera.h"
 #include "drawing/surface.hpp"
+#include "drawing/cube.hpp"
 #include "shader/shader.h"
+
 
 #define SCR_HEIGHT 600
 #define SCR_WIDTH 800
@@ -68,7 +70,6 @@ int main()
     //glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
     // * UBO
-    // * ---
     unsigned int UboWaveBlock;
     glGenBuffers(1, &UboWaveBlock);
     glBindBuffer(GL_UNIFORM_BUFFER, UboWaveBlock);
@@ -99,6 +100,8 @@ int main()
     unsigned int UniCameraLocation = glGetUniformBlockIndex(shaderWater.ID, "Camera");
     glUniformBlockBinding(shaderWater.ID, UniCameraLocation, 2);
 
+    Cube *cube = new Cube();
+    std::cout << cube->GetVerticesCount() << std::endl;
 
     while(!glfwWindowShouldClose(window))
     {

@@ -23,6 +23,8 @@ void main()
 {
     vec3 diffuse = vec3(texture(textureDiffuse0, texCoord));
     vec3 reflectionVect = reflect(fragPos - camPos, normalize(normal));
-    vec3 reflectColor = vec3(texture(skybox, reflectionVect) * texture(textureAmbient0, texCoord));
-    fragColor = vec4(diffuse + reflectColor, 1.0);
+    //vec3 reflectColor = vec3(texture(skybox, reflectionVect) * texture(textureAmbient0, texCoord));
+    //fragColor = vec4(diffuse + reflectColor, 1.0);
+    fragColor = vec4(diffuse, 1.0);
+
 }

@@ -11,7 +11,7 @@
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void camera_input(GLFWwindow *window, Camera *cam);
-void process_input(GLFWwindow *window, float speed, vec3* translation);
+void InputVectorTranslation(GLFWwindow *window, float speed, vec3* translation);
 float GetDeltaTime();
 
 #endif

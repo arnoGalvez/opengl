@@ -13,6 +13,8 @@ void camera_input(GLFWwindow *window, Camera *cam)
 
     float deltaTime = GetDeltaTime();
 
+    if (cam == NULL)
+        return;
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
     {
         (*cam).ProcessKeyboard(FORWARD, deltaTime);
@@ -30,7 +32,7 @@ void camera_input(GLFWwindow *window, Camera *cam)
         (*cam).ProcessKeyboard(RIGHT, deltaTime);
     } 
     
-}//*/
+}
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
@@ -42,7 +44,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
     glViewport(0, 0, width, height);
 }
 
-void process_input(GLFWwindow* window, float speed, vec3* translation)
+void InputVectorTranslation(GLFWwindow* window, float speed, vec3* translation)
 {
     float deltaTime = GetDeltaTime();
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)

@@ -39,6 +39,14 @@ class Surface
             glBindVertexArray(VAO);
             glDrawElements(GL_TRIANGLES, sizeofIndices / sizeof(unsigned int), GL_UNSIGNED_INT, 0);
         }
+        unsigned int GetVAO()
+        {
+            return VAO;
+        }
+        unsigned int GetVerticesCount()
+        {
+            return sizeofVertices / 8;
+        }
     private:
         unsigned int VAO, VBO, EBO;
 

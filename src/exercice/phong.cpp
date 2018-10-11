@@ -249,11 +249,11 @@ int main()
     slabShader.setMat4("proj", persp);
     slabShader.setInt("image", 0);
 
-    // * halo2
+    // * halo2 
     //*-------
     GenTexture2D halo2("/home/arno/opengl/src/textures/Halo_2_Logo.png", GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
 
-    // * window
+    // * window 
     //*--------
     GenTexture2D littleWindow("/home/arno/opengl/src/textures/blending_transparent_window.png", GL_CLAMP_TO_EDGE, GL_CLAMP_TO_EDGE, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
     vector<vec3> windowsPositions;
@@ -262,7 +262,7 @@ int main()
     windowsPositions.push_back(vec3(8, windowY, 12));
     windowsPositions.push_back(vec3(12, windowY, 14));
 
-    // * Framebuffer
+    // * Framebuffer 
     //*-------------
     unsigned int fbo;
     glGenFramebuffers(1, &fbo);
@@ -280,13 +280,13 @@ int main()
     glBindTexture(GL_TEXTURE_2D, 0);
     // ! play with glViewPort to render a specific part of the scene to the texture, or to render the screen to a smaller texture!!
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, frameBufTexture, 0);
-    // * possible to add a texture combining both depth & stencil buffers ! But it's less efficient than a renderbuffer, because of the conversion when writing data.
+    // ! possible to add a texture combining both depth & stencil buffers ! But it's less efficient than a renderbuffer, because of the conversion when writing data.
     /*unsigned int frameBufferDepthSten;
     glGenTextures(1, &frameBufferDepthSten);
     glBindTexture(GL_TEXTURE_2D, frameBufferDepthSten);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH24_STENCIL8, width, height, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_STENCIL_ATTACHMENT, GL_TEXTURE_2D, frameBufferDepthSten, 0);*/
-    //* more efficient depth & stencil buffers, with data written in OpenGl internal format (thus not converted)
+    // ! more efficient depth & stencil buffers, with data written in OpenGl internal format (thus not converted)
     unsigned int rbo;
     glGenRenderbuffers(1, &rbo);
     glBindRenderbuffer(GL_RENDERBUFFER, rbo);
@@ -325,13 +325,13 @@ int main()
 
     Shader shaderFrameBuffer("/home/arno/opengl/src/shader/vertex/frameBuffer.glsl", "/home/arno/opengl/src/shader/fragment/frameBuffer.glsl");
 
-    // * outline
+    // * outline 
     //*---------
     Shader outline = Shader("/home/arno/opengl/src/shader/vertex/outline.glsl", "/home/arno/opengl/src/shader/fragment/outline.glsl");
     outline.use();
     outline.setMat4("proj", persp);
 
-    // ! cubemap;
+    // * cubemap 
     //*---------
     float skyboxVertices[] = {-1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, -1.0f, 1.0f, -1.0f, -1.0f, -1.0f, -1.0f, 1.0f, 1.0f, -1.0f, 1.0f};
     vector<string> cubeMapTextures;

@@ -3,7 +3,7 @@
 #include <iostream>
 #include <cmath>
 
-#include "shader.h"
+#include "shader/shader.h"
 #include "window/window.h"
 #include "drawing/drawing.h"
 
