@@ -124,7 +124,6 @@ float EvalNoise(Noise n, vec2 pos)
     return noiseValue * n.amplitude;
 }
 
-
 void main()
 {
     // vec2 point = fs_in.textCoord - vec2(0.5, 0.5);
