@@ -4,3 +4,4 @@ I do this to get an insight of the domain, and so far I enjoy a lot that mix of 
 My main source of info up to this point is [LearnOpenGL](https://learnopengl.com/), I visited [ScratchAPixel](https://www.scratchapixel.com/) to implement basic noise functions.
 I recently started [Real Time Rendering 4th edition](http://www.realtimerendering.com/), with the aim of going through the book to deepen my theoretical knowledge and implementing some of those rendering techniques.
 # Work Examples
+![noise with sinus modulation](https://github.com/arnoGalvez/opengl/blob/master/img/noise_sin.png)
