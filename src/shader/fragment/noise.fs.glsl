@@ -207,8 +207,8 @@ void main()
         sum += EvalNoise(noise[i], fs_in.textCoord + vec2(time));
     }
     // sum = SinTransform(sum);
-    // sum = TurbuTransform(sum);
-    sum = WoodTransform(sum);
+    sum = TurbuTransform(sum);
+    // sum = WoodTransform(sum);
     fragColor = vec4(clamp(sum, 0, 1));
     
     // fragColor = vec4(clamp(permutationTable[TextCoordToIndex(255, fs_in.textCoord.x)], 0, 1));

@@ -13,8 +13,8 @@
 #include "textures/import.h"
 #include "drawing/position.hpp"
 #include "textures/procedural/noise.hpp"
-#define SCR_WIDTH 900
-#define SCR_HEIGHT 900
+#define SCR_WIDTH 1920
+#define SCR_HEIGHT 1080
 
 using namespace glm;
 
@@ -42,9 +42,9 @@ int main()
 
 	// SECTION  Objects Initialisation
 	glEnable(GL_DEPTH_TEST);
-	float radius = 6.f; // ANCHOR camera radius
+	float radius = 4.f; // ANCHOR camera radius
 	mat4 persp;
-	persp = perspective(radians(70.0f), (float)(SCR_HEIGHT) / (float)(SCR_WIDTH), 0.5f, 100.f);
+	persp = perspective(radians(70.0f), 16.0f / 9.0f, 0.5f, 100.f);
 	mat4 view;
 	mat4 model;
 	model = scale(model, vec3(1, 1, 1));
@@ -159,7 +159,7 @@ int main()
 			angularSpeed += 0.5f;
 			frequency += 0.001f;
 		}
-		float time = 0.0f * glfwGetTime(); // ANCHOR timer
+		float time = .2f * glfwGetTime(); // ANCHOR timer
 		shaderCube.use();
 		// shaderCube.setFloat("spiral.amplitudeSpeed", amplitudeSpeed);
 		// shaderCube.setFloat("spiral.angularSpeed", angularSpeed);

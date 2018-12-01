@@ -12,8 +12,8 @@
 #include "textures/import.h"
 #include "raytracer/ray.hpp"
 
-#define SCR_HEIGHT 500
-#define SCR_WIDTH 700
+#define SCR_HEIGHT 900
+#define SCR_WIDTH 900
 
 using namespace glm;
 
@@ -28,7 +28,7 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "water", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Spheres drawn using basic raytracing", NULL, NULL);
     if(window == NULL)
     {
         std::cout << "ERROR::GLFW::NULL WINDOW" << std::endl;
@@ -46,7 +46,7 @@ int main()
     // * ----
     mat4 persp = perspective(radians(80.0f), (float)(SCR_WIDTH) / (float)(SCR_HEIGHT), 0.1f, 100.0f);
     mat4 perspInv = inverse(persp);
-    Shader shaderRay("/home/arno/opengl/src/shader/vertex/raytracer.glsl","/home/arno/opengl/src/shader/fragment/raytracer.glsl");
+    Shader shaderRay("/home/arno/Proj/opengl/src/shader/vertex/raytracer.glsl","/home/arno/Proj/opengl/src/shader/fragment/raytracer.glsl");
     shaderRay.use();
     shaderRay.setMat4("perspInv", perspInv);
     shaderRay.setInt("spheresCount", 3);
@@ -90,9 +90,9 @@ int main()
 
     // * Noise
     // * -----
-    GenTexture2D Noise("/home/arno/opengl/src/textures/noise.png", GL_REPEAT, GL_REPEAT, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
-    shaderRay.use();
-    shaderRay.setInt("Noise", 0);//*/
+    // GenTexture2D Noise("/home/arno/Proj/opengl/src/textures/noise.png", GL_REPEAT, GL_REPEAT, GL_LINEAR, GL_LINEAR_MIPMAP_LINEAR);
+    // shaderRay.use();
+    // shaderRay.setInt("Noise", 0);//*/
     
     
    
@@ -107,8 +107,8 @@ int main()
         shaderRay.setVec4("spheres[0].center", view * vec4(2.0f, .5f, 0.0f, 1.0f));
         shaderRay.setVec4("spheres[1].center", view * vec4(2.0f, -100.0f, 0.0f, 1.0f));
         shaderRay.setVec4("spheres[2].center", view * vec4(2.0f, .5f, 1.0f, 1.0f));
-        glActiveTexture(GL_TEXTURE0);
-        glBindTexture(GL_TEXTURE_2D, Noise.textID);
+        // glActiveTexture(GL_TEXTURE0);
+        // glBindTexture(GL_TEXTURE_2D, Noise.textID);
         
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

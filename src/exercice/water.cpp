@@ -12,8 +12,8 @@
 #include "shader/shader.h"
 #include "textures/procedural/noise.hpp"
 
-#define SCR_HEIGHT 600
-#define SCR_WIDTH 800
+#define SCR_HEIGHT 900
+#define SCR_WIDTH 900
 
 using namespace glm;
 
@@ -46,7 +46,7 @@ int main()
     float D = 0.2f;
     float H = .2f;
 
-    Shader shaderWater("/home/arno/opengl/src/shader/vertex/water.glsl", "/home/arno/opengl/src/shader/fragment/water.glsl");
+    Shader shaderWater("/home/arno/Proj/opengl/src/shader/vertex/water.vs.glsl", "/home/arno/Proj/opengl/src/shader/fragment/water.fs.glsl");
     shaderWater.use();
     shaderWater.setFloat("D", D);
     shaderWater.setFloat("H", H);

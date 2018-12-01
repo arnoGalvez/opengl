@@ -49,7 +49,7 @@ void main()
     gl_Position = persp * view * FragPos4;
     vs_out.FragPos = vec3(FragPos4);
     vs_out.Normal = ComputeNormal(vec4(aPos, 1.0), 0.00001);
-    vs_out.TextCoord = aTextCoord;
+    vs_out.TextCoord = aTextCoord + vec2(1);
     //gl_PointSize = max(4.0 - 2*gl_Position.z, 0.1);
 }
 
