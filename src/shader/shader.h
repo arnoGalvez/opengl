@@ -1,6 +1,11 @@
 #ifndef SHADER_H
 #define SHADER_H
 
+//----------------------------------------------------------------------------------------
+// This code is mostly taken from available at https://learnopengl.com/
+// I only added a few methods, and refactorised some code to incorporate geometry shaders.
+//----------------------------------------------------------------------------------------
+
 #include <glad/glad.h>
 
 #include <string>
