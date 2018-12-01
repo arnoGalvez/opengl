@@ -1,43 +1,71 @@
 #include <glad/glad.h>
 #include <cstdlib>
 
+
 class Noise
 {
-  public: // ANCHOR public
-	Noise(GLsizei w, GLsizei h)
+  public:
+	Noise(GLsizei width, long noiseSeed)//, unsigned int permutationTableSeed)
+		: width(width), noiseSeed(noiseSeed)//, permutationTableSeed(permutationTableSeed)
 	{
-		width = w;
-		height = h;
 		glGenTextures(1, &textureID);
 		glBindTexture(GL_TEXTURE_2D, textureID);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_R16F, width, height, 0, GL_RED, GL_FLOAT, GenData());
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_R16F, width, width, 0, GL_RED, GL_FLOAT, GenData());
 		glBindTexture(GL_TEXTURE_2D, 0);
+		FreeNoiseValues();
 	}
 	void BindNoise()
 	{
 		glBindTexture(GL_TEXTURE_2D, textureID);
 	}
-
-  private: // ANCHOR private
-	GLsizei width, height;
-	GLuint textureID;
-	float *randomValues;
-	void *GenData()
+	/*int GetPermutationTableSize()
 	{
-		srand48(13564689);
-		randomValues = new float[width * height];
-		for (GLsizei i = 0; i < width * height; i++)
-		{
-			randomValues[i] = drand48();
-		}
-		return randomValues;
+		return 2 * width;
 	}
-	void FreeData()
+	int* GetPermutationTable()
 	{
-		delete randomValues;
+		return &permutationTable[0];
+	}//*/
+
+  private:
+	GLsizei width;
+	GLuint textureID;
+	long noiseSeed;
+	float *noiseValues;
+	// unsigned int permutationTableSeed;
+	// int *permutationTable;
+	void* GenData()
+	{
+		srand48(noiseSeed);
+		noiseValues = new float[width * width];
+		// srand(permutationTableSeed);
+		// permutationTable = new int[2 * width];
+		for (GLsizei i = 0; i < width * width; i++)
+		{
+			noiseValues[i] = drand48();
+			// permutationTable[i] = i;
+		}
+		// for (GLsizei i = 0; i < width * width; i++)
+		// {
+		// 	int k = rand() % width;
+		// 	Swap(permutationTable + i, permutationTable + k);
+		// 	permutationTable[i + width] = permutationTable[i];
+		// }
+		
+		return noiseValues;
+	}
+	void FreeNoiseValues()
+	{
+		delete[] noiseValues;
+	}
+	void Swap(int *p1, int *p2)
+	{
+		int tmp = *p1;
+		*p1 = *p2;
+		*p2 = tmp;
 	}
 };

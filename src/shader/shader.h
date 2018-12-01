@@ -97,6 +97,7 @@ public:
         unsigned int blockLoc = glGetUniformBlockIndex(ID, blockName.c_str());
         glUniformBlockBinding(ID, blockLoc, blockBindingPoint);
     }
+
 private:
     // utility function for checking shader compilation/linking errors.
     // ------------------------------------------------------------------------

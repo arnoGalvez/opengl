@@ -1,5 +1,5 @@
 CC = g++
-LIB = -lglfw3 -lGL -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl -lassimp
+LIB = -lglfw3 -lX11 -lXi -lXrandr -lXxf86vm -lXinerama -lXcursor -lrt -lm -pthread -ldl #-lassimp #-lGL
 CFLAGS = -Wall -Wextra -std=c++11 -g
 DIR = -I src -I src/drawing -I src/window
 DRW_FILES = $(wildcard src/drawing/*.cpp)
@@ -23,16 +23,16 @@ compile: ${OBJ_FILES} ${EXE_OBJ}
 	${CC} ${CFLAGS} ${DIR} -o $@ $< -c
 
 exo1 : ${OBJ_FILES} ${EXE_OBJ}
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/lib/GLFW ${LIB} 
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o ${LIB} 
 
 exo2 : ${OBJ_FILES} ${EXE_OBJ}
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o -L/usr/lib/GLFW ${LIB} 
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/$@.o ${LIB} 
 
 phong: ${OBJ_FILES} src/exercice/phong.o
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/phong.o -L/usr/lib/GLFW  ${LIB}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/phong.o  ${LIB}
 water: ${OBJ_FILES} src/exercice/water.o
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/water.o -L/usr/lib/GLFW ${LIB}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/water.o ${LIB}
 raytracer: ${OBJ_FILES} src/exercice/raytracer.o
-	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/raytracer.o -L/usr/lib/GLFW ${LIB}
-geometry: ${OBJ_FILES} src/exercice/geometry.o
-	${CC} ${CFLAGS} -o $@.exe ${OBJ_FILES} src/exercice/geometry.o -L/usr/lib/GLFW ${LIB}
+	${CC} ${CFLAGS} -o $@ ${OBJ_FILES} src/exercice/raytracer.o ${LIB}
+noise_cubes: ${OBJ_FILES} src/exercice/noise_cubes.o
+	${CC} ${CFLAGS} -o $@.exe ${OBJ_FILES} src/exercice/noise_cubes.o ${LIB}

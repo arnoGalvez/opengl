@@ -34,7 +34,7 @@ uniform DirectionalLight diretionalLight;
 void main()
 {
     FragColor = vec4(ComputeDirectionnalLight(diretionalLight, material), 0.7);
-    //FragColor = vec4(normalize(Normal) * 0.5 + 0.5, 1.0);
+    // FragColor = vec4(normalize(fs_in.Normal) * 0.5 + 0.5, 1.0);
 }
 
 vec3 ComputeDirectionnalLight(DirectionalLight light, Material mat)

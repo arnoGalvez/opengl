@@ -10,14 +10,14 @@
 #include "drawing/surface.hpp"
 #include "drawing/cube.hpp"
 #include "shader/shader.h"
-
+#include "textures/procedural/noise.hpp"
 
 #define SCR_HEIGHT 600
 #define SCR_WIDTH 800
 
 using namespace glm;
 
-void MouseCallback(GLFWwindow* window, double xpos, double ypos);
+void MouseCallback(GLFWwindow *window, double xpos, double ypos);
 
 Camera cam;
 
@@ -28,8 +28,8 @@ int main()
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-    GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "water", NULL, NULL);
-    if(window == NULL)
+    GLFWwindow *window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "water", NULL, NULL);
+    if (window == NULL)
     {
         std::cout << "ERROR::GLFW::NULL WINDOW" << std::endl;
         glfwTerminate();
@@ -44,7 +44,7 @@ int main()
     mat4 persp = perspective(radians(80.0f), (float)(SCR_WIDTH) / (float)(SCR_HEIGHT), 0.1f, 100.0f);
     Surface surface(300, &cam, &persp);
     float D = 0.2f;
-    float H = 0.05f;
+    float H = .2f;
 
     Shader shaderWater("/home/arno/opengl/src/shader/vertex/water.glsl", "/home/arno/opengl/src/shader/fragment/water.glsl");
     shaderWater.use();
@@ -52,14 +52,14 @@ int main()
     shaderWater.setFloat("H", H);
     shaderWater.setVec3("diretionalLight.ambient", vec3(.1f, .1f, .1f));
     shaderWater.setVec3("diretionalLight.diffuse", vec3(1.0f, 1.0f, 1.0f));
-    shaderWater.setVec3("diretionalLight.direction", vec3(-1.0f, -1.1f,0.0f));
-    shaderWater.setVec3("material.ambient", vec3(0.f, 0.f, 0.8f));
-    shaderWater.setVec3("material.diffuse", vec3(0.f, 0.f, 0.8f));
-    shaderWater.setVec3("material.specular", vec3(0.f, 0.f, 0.8f));
+    shaderWater.setVec3("diretionalLight.direction", vec3(-1.0f, -1.1f, 0.0f));
+    shaderWater.setVec3("material.ambient", vec3(0.686f, 0.933f, 0.933f));
+    shaderWater.setVec3("material.diffuse", vec3(0.686f, 0.933f, 0.933f));
+    shaderWater.setVec3("material.specular", vec3(0.686f, 0.933f, 0.933f));
     shaderWater.setFloat("material.shininess", 128.0f);
 
     mat4 model;
-    model = scale(model, vec3(5,1,5));
+    model = scale(model, vec3(5, 1, 5));
     glClearColor(0.4f, 0.4f, 0.4f, 1.0f);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_PROGRAM_POINT_SIZE);
@@ -90,7 +90,7 @@ int main()
     glBindBuffer(GL_UNIFORM_BUFFER, 0);
     unsigned int UniMatricesLoc = glGetUniformBlockIndex(shaderWater.ID, "Matrices");
     glUniformBlockBinding(shaderWater.ID, UniMatricesLoc, 1);
-    
+
     unsigned int UboCameraBlock;
     glGenBuffers(1, &UboCameraBlock);
     glBindBuffer(GL_UNIFORM_BUFFER, UboCameraBlock);
@@ -103,19 +103,41 @@ int main()
     Cube *cube = new Cube();
     std::cout << cube->GetVerticesCount() << std::endl;
 
-    while(!glfwWindowShouldClose(window))
+    GLsizei noiseDimension = 16;
+    Noise noise(noiseDimension, noiseDimension);
+    shaderWater.use();
+
+    // SECTION Noise
+    float amplitude = 1.f;
+    float frequency = .2f;
+    for (size_t i = 0; i < 8; i++)
+    {
+        std::string s = "noise[" + std::to_string(i) + "].";
+        shaderWater.setInt(s + "texture", 0);
+        shaderWater.setInt(s + "width", noiseDimension);
+        shaderWater.setInt(s + "height", noiseDimension);
+        shaderWater.setFloat(s + "amplitude", amplitude);
+        shaderWater.setFloat(s + "frequency", frequency);
+        amplitude *= .35f;
+        frequency *= 1.8f;
+    }
+    // !SECTION
+    glActiveTexture(GL_TEXTURE0);
+    noise.BindNoise();
+
+    while (!glfwWindowShouldClose(window))
     {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         camera_input(window, &cam);
 
         glBindBuffer(GL_UNIFORM_BUFFER, UboWaveBlock);
-        float t = glfwGetTime() * 2.0f;
+        float t = glfwGetTime() * .5f;
         glBufferSubData(GL_UNIFORM_BUFFER, 0, sizeof(float), &t);
 
         glBindBuffer(GL_UNIFORM_BUFFER, UboMatricesBlock);
         mat4 view = cam.GetViewMatrix();
         glBufferSubData(GL_UNIFORM_BUFFER, sizeof(mat4), sizeof(mat4), value_ptr(view));
-        
+
         glBindBuffer(GL_UNIFORM_BUFFER, UboCameraBlock);
         glBufferSubData(GL_UNIFORM_BUFFER, 0, 4 * sizeof(float), value_ptr(cam.position));
 
@@ -126,12 +148,12 @@ int main()
         glfwPollEvents();
         glfwSwapBuffers(window);
     }
-    
+
     glfwTerminate();
     return 0;
 }
 
-void MouseCallback(GLFWwindow* window, double xpos, double ypos)
+void MouseCallback(GLFWwindow *window, double xpos, double ypos)
 {
     (void)window;
     static float xOld = xpos;
